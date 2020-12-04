@@ -1,0 +1,10 @@
+Project 4 Report:
+
+If mapdata.txt holds N lines of data, and each street segment has M characters on average, then the time complexity of load() is O(N*M), or essentially O(N), since N is much greater than M. This is because load() must scan through each of the N lines, and for each line that is a street segment (most of them), it must scan through all M characters (in order to find and process the spaces in between the numbers). The rest of the processing (involving the expandable hash map and inserting into a vector) is done in constant time O(1).  
+
+The getSegmentsThatStartWith() has a time complexity of O(1). This is because it can find the vector of street segments given a GeoCoord in O(1), since the GeoCoords are mapped to vectors of street segments in the Expandable Hash map. Then, the "segs" vector of street segments (parameter passed in by reference) can be cleared and assigned to the appropriate vector of street segments in O(1), since vectors are array-based. 
+
+If there are N segments in our mapping data, the generatePointToPointRoute() function runs in O(N) time. The function visits each coordinate at most once, which is O(N) (since it keeps track of which coordinates have already been visited). Keep in mind that for each coordinate, it can easily get a vector of adjacent coordinates in O(1), since a call to getSegmentsThatStartWith() has a time complexity of O(1). After that, the function "reverses" its tracks to find the original route, which also has time complexity O(N). Thus, the function as a whole runs in O(N) time. 
+
+
+If there are N deliveries passed in, then the function. optimizeDeliveryOrder() runs in O(N) time. This is because the function only scans through the deliveries once in order to compute the total crow distance.
